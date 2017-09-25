@@ -10,21 +10,29 @@ typedef struct
 {
 	char* buffer;
 	char** strings;
-	size_t file_size;
 	size_t str_amount;
 } Text;
 
+Text   MakeText     (char* filename);
 char*  ReadData     (FILE* source);
-char** GetStrPtrs   (char* buffer, int str_amount);
 int    CountStrings (char* buffer);
+char** GetStrPtrs   (char* buffer, int str_amount);
 
 int main (int argc, char* argv [])
 {
 	assert (argc == 2);
 	
-	Text text = {};
+	Text text = MakeText (argv [1]);
 	
-	FILE* input = fopen (argv [1], "r");
+	return 0;
+}
+
+Text MakeText (char* filename)
+{
+	assert (filename);
+	Text text = {};
+
+	FILE* input = fopen (filename, "r");
 	assert (input);
 	
 	text.buffer = ReadData (input);
@@ -37,12 +45,12 @@ int main (int argc, char* argv [])
 	text.strings = GetStrPtrs (text.buffer, text.str_amount);
 	assert (text.strings);
 	PRINT ("\nfirst string: %s\n", text.strings [0]);
-	PRINT ("third string: %s\n", text.strings [2]);
+	PRINT (  "third string: %s\n", text.strings [2]);
 	
 	fclose (input);
-
-	return 0;
+	return text;
 }
+
 
 char* ReadData (FILE* source)
 {
@@ -57,7 +65,7 @@ char* ReadData (FILE* source)
                 sizeof(char), (size_t) file_size, source);
         assert (char_qt == (size_t) file_size);
         buffer [file_size] = '\0';
-	PRINT ("file_size = %d\n", (int) file_size);
+	PRINT ("File size: %d\n", (int) file_size);
  
 	return buffer;
 }
