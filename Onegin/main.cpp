@@ -17,6 +17,8 @@ Text   MakeText     (char* filename);
 char*  ReadData     (FILE* source);
 int    CountStrings (char* buffer);
 char** GetStrPtrs   (char* buffer, int str_amount);
+int    Comparator   (const void* arg1, const void* arg2);
+void   Printer      (Text* text);
 
 int main (int argc, char* argv [])
 {
@@ -24,6 +26,10 @@ int main (int argc, char* argv [])
 	
 	Text text = MakeText (argv [1]);
 	
+	qsort (text.strings, text.str_amount, sizeof (text.strings[0]), Comparator);
+	
+	Printer (&text);
+
 	return 0;
 }
 
@@ -40,12 +46,12 @@ Text MakeText (char* filename)
 	PRINT ("\n%s\n", text.buffer);
 
 	text.str_amount = CountStrings (text.buffer); 
-	PRINT ("Number of lines: %zu \n", text.str_amount);
+	PRINT ("Number of lines: %zu \n\n", text.str_amount);
 
 	text.strings = GetStrPtrs (text.buffer, text.str_amount);
 	assert (text.strings);
-	PRINT ("\nfirst string: %s\n", text.strings [0]);
-	PRINT (  "third string: %s\n", text.strings [2]);
+	PRINT ("first string: %s\n", text.strings [0]);
+	PRINT ("third string: %s\n", text.strings [2]);
 	
 	fclose (input);
 	return text;
@@ -108,3 +114,17 @@ char** GetStrPtrs (char* buffer, int str_amount)
 	
 	return lines_arr;
 }
+
+int Comparator (const void* arg1, const void* arg2)
+{
+	return strcmp (*(const char**) arg1, *(const char**) arg2);
+}
+
+void Printer (Text* text)
+{
+	for (int i = 0; i < text->str_amount; i++) 
+	{
+		printf ("%s\n", text->strings[i]);
+	}
+}
+
