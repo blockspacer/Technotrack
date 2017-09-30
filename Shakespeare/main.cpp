@@ -51,7 +51,7 @@ Text MakeText (const char* filename)
 	
 	text.buffer = ReadData (input);
 	assert (text.buffer);
-	PRINT ("\n%s\n", text.buffer);
+	PRINT ("%s\n", text.buffer);
 
 	text.str_num = CountStrings (text.buffer); 
 	PRINT ("Number of lines: %zu \n\n", text.str_num);
