@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cassert>
+#include <cstring>
 
 #include "stack.hpp"
 
@@ -11,16 +12,15 @@ Stack::Stack (size_t size):
     data = new int [capacity];
     assert (data);
     
-    for (size_t i = 0; i <= capacity; i++)
+    for (size_t i = 0; i < capacity; i++)
     {
         data[i] = POISON;
     }
-    ASSERT_OK();
 }
 
 Stack::~Stack ()
 {
-    delete[] data;
+    delete [] data;
 }
 
 void Stack::Push (int value)
@@ -35,6 +35,7 @@ int Stack::Pop ()
 {
     ASSERT_OK();
     counter --;
+    ASSERT_OK();
     int value = data [counter];
     data [counter] = POISON;
     ASSERT_OK(); 
@@ -52,21 +53,23 @@ bool Stack::Ok () const
 {
     return this && 
 	    data && 
-        //capacity >= 0 && 
-	    //counter >=0  &&
-	    counter <= capacity + 1;
+        capacity > 0 && 
+	    counter < capacity;
 }
 
 void Stack::Dump ()
 {
     PRINT("Stack [%p] ", this);
     PRINT("%s \n", (Ok ())? "ok": "ERROR");
-    PRINT("Capacity: %zu \n", capacity);
-    PRINT("Counter: %zu \n", counter);
-    PRINT("Data [%p] \n", data);
-    for (size_t i = 0; i <= capacity; i++)
+    PRINT("{\n");
+    PRINT("    Capacity: %zu \n", capacity);
+    PRINT("    Counter: %zu \n", counter);
+    PRINT("    Data [%zu] [%p] = {\n", capacity, data);
+    for (size_t i = 0; i < capacity; i++)
     {
-        PRINT("\t*[%zu] = %d %s\n", i,
+        PRINT("\t[%zu] = %d %s\n", i,
         data[i], ((data[i] == POISON)? "<=> POISON" : " "));
     }
+    PRINT("    }\n");
+    PRINT("}\n");
 }

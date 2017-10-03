@@ -24,7 +24,7 @@ class Stack
 
 private:
     int* data;
-    size_t counter;
+    size_t counter; // shows the number of the first free cell
     size_t capacity;
 
 public:
