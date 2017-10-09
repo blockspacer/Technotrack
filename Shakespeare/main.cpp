@@ -3,12 +3,14 @@
 #include <cstring>
 #include <cassert>
 #include <cctype>
+#include <sys/stat.h>
 
 //#define PRINT(...) printf (__VA_ARGS__)
 #define PRINT(...)
 
 const char* sort_res     = "./Result/sort";
 const char* sort_res_inv = "./Result/sort_inv";
+const char* argv1        = 0;
 
 typedef struct 
 {
@@ -18,7 +20,7 @@ typedef struct
 } Text;
 
 Text   MakeText      (const char* filename);
-char*  ReadData      (FILE* source);
+char*  ReadData      (FILE* source, const char* filename);
 int    CountStrings  (char* buffer);
 char** GetStrPtrs    (char* buffer, int str_num);
 int    Comparator    (const void* arg1, const void* arg2);
@@ -29,7 +31,7 @@ int main (int argc, char* argv [])
 {
 	assert (argc == 2);
 	
-	Text text = MakeText (argv [1]);
+    Text text = MakeText (argv [1]);
 	
 	qsort (text.strings, text.str_num, sizeof (*text.strings), Comparator);
 	PrintText (&text, sort_res);
@@ -49,7 +51,7 @@ Text MakeText (const char* filename)
 	FILE* input = fopen (filename, "r");
 	assert (input);
 	
-	text.buffer = ReadData (input);
+	text.buffer = ReadData (input, filename);
 	assert (text.buffer);
 	PRINT ("%s\n", text.buffer);
 
@@ -63,22 +65,26 @@ Text MakeText (const char* filename)
 	return text;
 }
 
-
-char* ReadData (FILE* source)
+char* ReadData (FILE* source, const char* filename)
 {
 	assert (source);
 
-	fseek (source, 0, SEEK_END);
-        long file_size = ftell (source);
-        rewind (source);
+    struct stat buff;
+    stat (filename, &buff);
+    long file_size = buff.st_size;
 
-        char* buffer = new char [file_size + 1];
-        size_t char_qt = fread (buffer,
-                sizeof(char), (size_t) file_size, source);
-        assert (char_qt == (size_t) file_size);
-        buffer [file_size] = '\0';
-	PRINT ("File size: %d\n", (int) file_size);
- 
+    char* buffer = new char [file_size + 1];
+	if (!buffer)  {
+		perror ("MEMORY ALLOCATION ERROR!\n");
+		exit (EXIT_FAILURE);
+	}
+
+    size_t char_qt = fread (buffer,
+            sizeof(char), (size_t) file_size, source);
+    assert (char_qt == (size_t) file_size);
+    buffer [file_size] = '\0';
+    PRINT ("File size: %d\n", (int) file_size);
+     
 	return buffer;
 }
 
@@ -128,11 +134,14 @@ int Comparator (const void* arg1, const void* arg2)
 
 	const char* str1 = *(const char**) arg1;
 	const char* str2 = *(const char**) arg2;
+    
+    while (true) 
+    {
+        while (isspace (*str1) || ispunct (*str1)) str1++;
+        while (isspace (*str2) || ispunct (*str2)) str2++;
 
-	while (isspace (*str1) || ispunct (*str1)) str1++;
-	while (isspace (*str2) || ispunct (*str2)) str2++;
-
-	return strcmp (str1, str2);
+        return strcmp (str1, str2);
+    }
 }
 
 int ComparatorInv (const void* arg1, const void* arg2)
@@ -146,10 +155,13 @@ int ComparatorInv (const void* arg1, const void* arg2)
 	const char* end_line1 = str1 + strlen (str1) - 1;
 	const char* end_line2 = str2 + strlen (str2) - 1;
 
-	while (isspace (*end_line1) || ispunct (*end_line1)) end_line1--;
-	while (isspace (*end_line2) || ispunct (*end_line2)) end_line2--;
+    while (true) 
+    {
+        while (isspace (*end_line1) || ispunct (*end_line1)) end_line1--;
+        while (isspace (*end_line2) || ispunct (*end_line2)) end_line2--;
 
-	return strcmp (end_line1, end_line2);
+        return strcmp (end_line1, end_line2);
+    }
 }
 
 int PrintText (Text* text, const char* filename)
