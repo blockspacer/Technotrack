@@ -5,8 +5,8 @@
 int main ()
 {
 	Stack stack_t (16);
-
-	for (int i = 0; i < 10; i++)
+    
+    for (int i = 0; i < 10; i++)
     {
         stack_t.Push (2*i);
     }

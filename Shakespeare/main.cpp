@@ -33,12 +33,14 @@ int main (int argc, char* argv [])
 	
     Text text = MakeText (argv [1]);
 	
-	qsort (text.strings, text.str_num, sizeof (*text.strings), Comparator);
+	qsort (text.strings, text.str_num, 
+            sizeof (*text.strings), Comparator);
 	PrintText (&text, sort_res);
 	
-	qsort (text.strings, text.str_num, sizeof (*text.strings), ComparatorInv);
+	qsort (text.strings, text.str_num, 
+            sizeof (*text.strings), ComparatorInv);
 	PrintText (&text, sort_res_inv);
-
+    
 	return 0;
 }
 
@@ -139,8 +141,20 @@ int Comparator (const void* arg1, const void* arg2)
     {
         while (isspace (*str1) || ispunct (*str1)) str1++;
         while (isspace (*str2) || ispunct (*str2)) str2++;
-
-        return strcmp (str1, str2);
+        
+        if (*str1 == *str2)
+        {
+            if (*str1 == '\0') 
+            {
+                return 0; 
+            }
+        }
+        else 
+        { 
+            return *str1 - *str2; 
+        }
+        str1++;
+        str2++;
     }
 }
 
@@ -155,13 +169,25 @@ int ComparatorInv (const void* arg1, const void* arg2)
 	const char* end_line1 = str1 + strlen (str1) - 1;
 	const char* end_line2 = str2 + strlen (str2) - 1;
 
-    while (true) 
+    while ((end_line1 >= str1) && (end_line2 >= str2)) 
     {
-        while (isspace (*end_line1) || ispunct (*end_line1)) end_line1--;
-        while (isspace (*end_line2) || ispunct (*end_line2)) end_line2--;
-
-        return strcmp (end_line1, end_line2);
+        while (isspace (*end_line1) || ispunct (*end_line1)) 
+            end_line1--;
+        while (isspace (*end_line2) || ispunct (*end_line2))
+            end_line2--;
+        if (*end_line1 != *end_line2) break;
+        end_line1--;
+        end_line2--;
     }
+
+    if ((end_line1 - str1) == -1 && (end_line2 - str2) == -1)
+        return 0;
+    if ((end_line1 - str1) == -1)
+        end_line1 = str1 + strlen (str1);
+    if ((end_line2 - str2) == -1)
+        end_line2 = str2 + strlen (str2);
+
+    return *end_line1 - *end_line2;
 }
 
 int PrintText (Text* text, const char* filename)

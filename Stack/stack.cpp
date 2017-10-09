@@ -10,7 +10,7 @@ Stack::Stack (size_t size):
     capacity (size)
 {
     data = new int [capacity];
-    assert (data);
+    assert (data); // no assert
     
     for (size_t i = 0; i < capacity; i++)
     {
@@ -52,7 +52,7 @@ void Stack::Clear ()
 bool Stack::Ok () const
 {
     return this && 
-	    data && 
+	    data &&
         capacity > 0 && 
 	    counter < capacity;
 }
