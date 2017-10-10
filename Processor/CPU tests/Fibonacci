@@ -1,0 +1,21 @@
+IN R8 3 ; counter       NO LABELS!
+IN R0 2 ; constant
+IN R1 1 ; init a
+IN R2 2 ; init b
+
+JMP 26          ; while (counter <= 13) {
+ADDREG R1 R2 R1 ;    a += b
+ADDREG R1 R2 R2 ;    b += a
+ADDREG R8 R0 R8 ;    counter += 2
+JLE 14 R8 5     ; }
+
+IN R5 2         ; base = 2
+IN R7 5         ; input
+DIVREG R7 R5 R4 ; |
+MULREG R4 R5 R4 ; | R4 = R7 mod 2
+SUBREG R7 R4 R4 ; | 
+
+JE 56 R4 0  ; if (R4)
+OUT R1          ;   print a;
+JMP 58          ; else
+OUT R2          ;   print b;

@@ -1,0 +1,10 @@
+push 3
+push 1
+add
+push 5
+push 8
+add
+mul
+push -6
+mul
+out

@@ -1,0 +1,18 @@
+To run the programm:
+
+    make ASM
+    ./ASM
+    make RCPU
+    ./RCPU
+
+
+VERBOSE MODE:
+    change define in superHeader.hpp
+
+There are some tests in "Other folder"
+
+CPU and ASM are called from cpu_main.cpp
+and asm_main.cpp
+
+
+made by Detinin Roman 4 April 2017

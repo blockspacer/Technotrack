@@ -1,0 +1,15 @@
+IN R1 6
+IN R3 1
+INREG R2 R1
+CALL 2
+OUT R2
+HLT
+
+;function factorial
+:2
+JLE 4 R1 1
+SUBREG R1 R3 R1
+MULREG R1 R2 R2
+CALL 2
+:4
+RET
