@@ -1,6 +1,8 @@
-#ASSEMBLER & PROCESSOR
+ASSEMBLER & PROCESSOR
+=====================
 
-###To run the programm:
+To run the programm:
+---------------------
     make ASM
     ./ASM
     make RCPU
