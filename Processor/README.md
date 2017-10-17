@@ -1,17 +1,16 @@
 ASSEMBLER & PROCESSOR
 =====================
 
-To run the programm:
+To run the program:
 ---------------------
     make ASM
     ./ASM
     make RCPU
     ./RCPU
 
-To see some debug information change define in superHeader.hpp.
+To see some debug information change define in **superHeader.hpp.**
 
 ---
-###
-*First version made by Detinin Roman 4 April 2017*  
-*UPD (10.10.17): Stack was improved.*  
-*UPD (17.10.17): Minor codestyle changes.*  
+*	04.04.17: ASM & CPU v.1.0.  
+*	10.10.17 (UPD): Stack was improved.  
+*	17.10.17 (UPD): Minor codestyle changes.  
