@@ -11,3 +11,6 @@ RCPUAS: cpu_main.cpp RCPU.cpp  StackForRCPU.cpp superHeader.hpp
 
 RCPU: cpu_main.cpp RCPU.cpp StackForRCPU.cpp superHeader.hpp Commands RCPU.hpp StackForRCPU.hpp
 	g++ -Wall -std=c++11 assembler.cpp RCPU.cpp StackForRCPU.cpp cpu_main.cpp -o RCPU
+
+clean: 
+	rm ASM RCPU

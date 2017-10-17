@@ -102,7 +102,7 @@ int Processor::SQRT ()
     if (val < 0)
     {
         PRINT("Operation can't be executed! \n");
-        return 0;
+        exit (0);
     }
 
     else {
@@ -168,11 +168,8 @@ int Processor::INREG ()
 int Processor::OUT ()
 {
     PRINT("~Out~\n");
-    PRINT("Value in R%d - %d\n",
-           Args_[0], Registers_[Args_[0]]);
-
+    PRINT("Value in R%d - %d\n", Args_[0], Registers_[Args_[0]]);
     printf ("Result - %d\n", Registers_[Args_[0]]);
-
     return 0;
 }
 
@@ -231,7 +228,7 @@ int Processor::SQRTREG ()
     if (value < 0)
        {
            PRINT("Operation can't be executed! \n");
-           return 0;
+           exit (0);
        }
 
     else
@@ -291,14 +288,14 @@ size_t Processor::ReadDataInBuffFromFile (FILE* stream)
     }
         sizeOfCmdBuff_ = j;
 
-    PRINT("Number of commands and agruments:  = %d\n", sizeOfCmdBuff_);
+    PRINT("Number of commands and agruments:  = %d\n", 
+            sizeOfCmdBuff_);
     PRINT("CmdBuff_: ");
     for (int cnt = 0; cnt < sizeOfCmdBuff_; cnt++)
-      {
-          PRINT("%d ", Buff_[cnt]);
-      }
+    {
+        PRINT("%d ", Buff_[cnt]);
+    }
     PRINT("\n\n");
-
     return sizeOfCmdBuff_;
 }
 
@@ -308,15 +305,13 @@ int Processor::Execute ()
      {
          ASM_CMDS cmd = (ASM_CMDS) Buff_[instructionPtr_];
 
-         PRINT("\n=======NEW CYCLE=========\n");
+         PRINT("\n======| START CYCLE |======\n");
          PRINT("InstructionPtr = %d\n", instructionPtr_);
          PRINT("cmd = %d\n", (int) cmd);
 
          instructionPtr_++;
          size_t argQt = GetCmdArgQt (cmd);
-
          PRINT("argQt = %zu\n", argQt);
-
          for (size_t j = 0; j < argQt; j++)
          {
              Args_[j] = Buff_[instructionPtr_];
@@ -350,7 +345,7 @@ case ASM_##cmdName:                             \
         PRINT("%d ", Registers_[i]);            \
     }                                           \
                                                 \
-    PRINT("\n\n=======END CYCLE=========\n");   \
+    PRINT("\n\n======| END CYCLE |======\n");   \
                                                 \
 }; break;
 
@@ -360,7 +355,7 @@ case ASM_##cmdName:                             \
 
 default:
 {
-    PRINT("CPU_CMDS switch failed!\n");
+    printf ("CPU_CMDS switch failed!\n");
     exit(0);
 }; break;
 
