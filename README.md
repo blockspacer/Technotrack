@@ -1,6 +1,7 @@
-# Technotrack 2017
-# Task 0: Solve square
-# Task 1: String sorting
-# Task 2: Stack
-# Task 3: Assembler
-# Task 4: Processor
+Technotrack 2017
+==========
+###Tasks:
+**0. Solve square
+1. [String sorting](https://github.com/detininroman/Technotrack/tree/master/Shakespeare) 
+2. [Stack](https://github.com/detininroman/Technotrack/tree/master/Stack) 
+3. [Asembler & Processor](https://github.com/detininroman/Technotrack/tree/master/Processor) **
