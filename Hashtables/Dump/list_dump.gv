@@ -1,0 +1,14 @@
+digraph graf {
+Node_0x60300000ee90 [label="• HEAD •
+Data: 90\l "]
+Node_0x60300000ee90->Node_0x60300000eec0
+Node_0x60300000eec0 [label="Data: 80\l "]
+Node_0x60300000eec0->Node_0x60300000ee90
+Node_0x60300000eec0->Node_0x60300000eef0
+Node_0x60300000eef0 [label="Data: 70\l "]
+Node_0x60300000eef0->Node_0x60300000eec0
+Node_0x60300000eef0->Node_0x60300000efb0
+Node_0x60300000efb0 [label="• TAIL •
+Data: 10\l "]
+Node_0x60300000efb0->Node_0x60300000eef0
+}
