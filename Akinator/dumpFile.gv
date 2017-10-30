@@ -1,0 +1,91 @@
+digraph graf {
+treeNode_0x60300000efe0 [label="[0x60300000efe0]\lparent [(nil)]\lleft   [0x60300000efb0]\lright  [0x60300000e830]\lstring [0x60200000eff0] = male?\l"]
+treeNode_0x60300000efe0->treeNode_0x60300000efb0
+treeNode_0x60300000efb0 [label="[0x60300000efb0]\lparent [0x60300000efe0]\lleft   [0x60300000ef50]\lright  [0x60300000ed70]\lstring [0x60200000efd0] = physicist?\l"]
+treeNode_0x60300000efb0->treeNode_0x60300000ef50
+treeNode_0x60300000ef50 [label="[0x60300000ef50]\lparent [0x60300000efb0]\lleft   [0x60300000ef20]\lright  [0x60300000eef0]\lstring [0x60300000ef80] = Is he our physics lecturer?\l"]
+treeNode_0x60300000ef50->treeNode_0x60300000ef20
+treeNode_0x60300000ef20 [label="[0x60300000ef20]\lparent [0x60300000ef50]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000efb0] = Bulygin\l"]
+treeNode_0x60300000ef50->treeNode_0x60300000eef0
+treeNode_0x60300000eef0 [label="[0x60300000eef0]\lparent [0x60300000ef50]\lleft   [0x60300000eec0]\lright  [0x60300000ee00]\lstring [0x60200000ef90] = halyava?\l"]
+treeNode_0x60300000eef0->treeNode_0x60300000eec0
+treeNode_0x60300000eec0 [label="[0x60300000eec0]\lparent [0x60300000eef0]\lleft   [0x60300000ee90]\lright  [0x60300000ee60]\lstring [0x60200000ef70] = superhalyava?\l"]
+treeNode_0x60300000eec0->treeNode_0x60300000ee90
+treeNode_0x60300000ee90 [label="[0x60300000ee90]\lparent [0x60300000eec0]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ef50] = Zhotikov\l"]
+treeNode_0x60300000eec0->treeNode_0x60300000ee60
+treeNode_0x60300000ee60 [label="[0x60300000ee60]\lparent [0x60300000eec0]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ef30] = Yudin\l"]
+treeNode_0x60300000eef0->treeNode_0x60300000ee00
+treeNode_0x60300000ee00 [label="[0x60300000ee00]\lparent [0x60300000eef0]\lleft   [0x60300000edd0]\lright  [0x60300000eda0]\lstring [0x60300000ee30] = Does he have beard?\l"]
+treeNode_0x60300000ee00->treeNode_0x60300000edd0
+treeNode_0x60300000edd0 [label="[0x60300000edd0]\lparent [0x60300000ee00]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ef10] = Koldunov\l"]
+treeNode_0x60300000ee00->treeNode_0x60300000eda0
+treeNode_0x60300000eda0 [label="[0x60300000eda0]\lparent [0x60300000ee00]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000eef0] = Ovchinkin\l"]
+treeNode_0x60300000efb0->treeNode_0x60300000ed70
+treeNode_0x60300000ed70 [label="[0x60300000ed70]\lparent [0x60300000efb0]\lleft   [0x60300000ed40]\lright  [0x60300000ecb0]\lstring [0x60200000eed0] = inf_lector?\l"]
+treeNode_0x60300000ed70->treeNode_0x60300000ed40
+treeNode_0x60300000ed40 [label="[0x60300000ed40]\lparent [0x60300000ed70]\lleft   [0x60300000ed10]\lright  [0x60300000ece0]\lstring [0x60200000eeb0] = fat?\l"]
+treeNode_0x60300000ed40->treeNode_0x60300000ed10
+treeNode_0x60300000ed10 [label="[0x60300000ed10]\lparent [0x60300000ed40]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ee90] = Korotin\l"]
+treeNode_0x60300000ed40->treeNode_0x60300000ece0
+treeNode_0x60300000ece0 [label="[0x60300000ece0]\lparent [0x60300000ed40]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ee70] = Severov\l"]
+treeNode_0x60300000ed70->treeNode_0x60300000ecb0
+treeNode_0x60300000ecb0 [label="[0x60300000ecb0]\lparent [0x60300000ed70]\lleft   [0x60300000ec80]\lright  [0x60300000ebf0]\lstring [0x60200000ee50] = matan_semer?\l"]
+treeNode_0x60300000ecb0->treeNode_0x60300000ec80
+treeNode_0x60300000ec80 [label="[0x60300000ec80]\lparent [0x60300000ecb0]\lleft   [0x60300000ec50]\lright  [0x60300000ec20]\lstring [0x60200000ee30] = matan_617?\l"]
+treeNode_0x60300000ec80->treeNode_0x60300000ec50
+treeNode_0x60300000ec50 [label="[0x60300000ec50]\lparent [0x60300000ec80]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ee10] = Golubev\l"]
+treeNode_0x60300000ec80->treeNode_0x60300000ec20
+treeNode_0x60300000ec20 [label="[0x60300000ec20]\lparent [0x60300000ec80]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000edf0] = Shtepin\l"]
+treeNode_0x60300000ecb0->treeNode_0x60300000ebf0
+treeNode_0x60300000ebf0 [label="[0x60300000ebf0]\lparent [0x60300000ecb0]\lleft   [0x60300000ebc0]\lright  [0x60300000ead0]\lstring [0x60200000edd0] = linal?\l"]
+treeNode_0x60300000ebf0->treeNode_0x60300000ebc0
+treeNode_0x60300000ebc0 [label="[0x60300000ebc0]\lparent [0x60300000ebf0]\lleft   [0x60300000eb90]\lright  [0x60300000eb00]\lstring [0x60200000edb0] = linal_lector?\l"]
+treeNode_0x60300000ebc0->treeNode_0x60300000eb90
+treeNode_0x60300000eb90 [label="[0x60300000eb90]\lparent [0x60300000ebc0]\lleft   [0x60300000eb60]\lright  [0x60300000eb30]\lstring [0x60200000ed90] = fupm?\l"]
+treeNode_0x60300000eb90->treeNode_0x60300000eb60
+treeNode_0x60300000eb60 [label="[0x60300000eb60]\lparent [0x60300000eb90]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ed70] = Beklemishev\l"]
+treeNode_0x60300000eb90->treeNode_0x60300000eb30
+treeNode_0x60300000eb30 [label="[0x60300000eb30]\lparent [0x60300000eb90]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ed50] = Chubarov\l"]
+treeNode_0x60300000ebc0->treeNode_0x60300000eb00
+treeNode_0x60300000eb00 [label="[0x60300000eb00]\lparent [0x60300000ebc0]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ed30] = Zhestkov\l"]
+treeNode_0x60300000ebf0->treeNode_0x60300000ead0
+treeNode_0x60300000ead0 [label="[0x60300000ead0]\lparent [0x60300000ebf0]\lleft   [0x60300000eaa0]\lright  [0x60300000ea70]\lstring [0x60200000ed10] = teor_ver?\l"]
+treeNode_0x60300000ead0->treeNode_0x60300000eaa0
+treeNode_0x60300000eaa0 [label="[0x60300000eaa0]\lparent [0x60300000ead0]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ecf0] = Goryainov\l"]
+treeNode_0x60300000ead0->treeNode_0x60300000ea70
+treeNode_0x60300000ea70 [label="[0x60300000ea70]\lparent [0x60300000ead0]\lleft   [0x60300000ea10]\lright  [0x60300000e8c0]\lstring [0x60200000ecd0] = mentor_ILab?\l"]
+treeNode_0x60300000ea70->treeNode_0x60300000ea10
+treeNode_0x60300000ea10 [label="[0x60300000ea10]\lparent [0x60300000ea70]\lleft   [0x60300000e9e0]\lright  [0x60300000e980]\lstring [0x60300000ea40] = Does_he_wear_glasses?\l"]
+treeNode_0x60300000ea10->treeNode_0x60300000e9e0
+treeNode_0x60300000e9e0 [label="[0x60300000e9e0]\lparent [0x60300000ea10]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ecb0] = Zhdanovskiy\l"]
+treeNode_0x60300000ea10->treeNode_0x60300000e980
+treeNode_0x60300000e980 [label="[0x60300000e980]\lparent [0x60300000ea10]\lleft   [0x60300000e950]\lright  [0x60300000e920]\lstring [0x60300000e9b0] = Does he have long hair?\l"]
+treeNode_0x60300000e980->treeNode_0x60300000e950
+treeNode_0x60300000e950 [label="[0x60300000e950]\lparent [0x60300000e980]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ec90] = Raf\l"]
+treeNode_0x60300000e980->treeNode_0x60300000e920
+treeNode_0x60300000e920 [label="[0x60300000e920]\lparent [0x60300000e980]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ec70] = Fil\l"]
+treeNode_0x60300000ea70->treeNode_0x60300000e8c0
+treeNode_0x60300000e8c0 [label="[0x60300000e8c0]\lparent [0x60300000ea70]\lleft   [0x60300000e890]\lright  [0x60300000e860]\lstring [0x60300000e8f0] = Ne_ponyal_voprosa?\l"]
+treeNode_0x60300000e8c0->treeNode_0x60300000e890
+treeNode_0x60300000e890 [label="[0x60300000e890]\lparent [0x60300000e8c0]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ec50] = Mihailov\l"]
+treeNode_0x60300000e8c0->treeNode_0x60300000e860
+treeNode_0x60300000e860 [label="[0x60300000e860]\lparent [0x60300000e8c0]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ec30] = Dedinski\l"]
+treeNode_0x60300000efe0->treeNode_0x60300000e830
+treeNode_0x60300000e830 [label="[0x60300000e830]\lparent [0x60300000efe0]\lleft   [0x60300000e800]\lright  [0x60300000e7d0]\lstring [0x60200000ec10] = informatics?\l"]
+treeNode_0x60300000e830->treeNode_0x60300000e800
+treeNode_0x60300000e800 [label="[0x60300000e800]\lparent [0x60300000e830]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ebf0] = Derbysheva\l"]
+treeNode_0x60300000e830->treeNode_0x60300000e7d0
+treeNode_0x60300000e7d0 [label="[0x60300000e7d0]\lparent [0x60300000e830]\lleft   [0x60300000e7a0]\lright  [0x60300000e770]\lstring [0x60200000ebd0] = matan_616\l"]
+treeNode_0x60300000e7d0->treeNode_0x60300000e7a0
+treeNode_0x60300000e7a0 [label="[0x60300000e7a0]\lparent [0x60300000e7d0]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000ebb0] = baboolya\l"]
+treeNode_0x60300000e7d0->treeNode_0x60300000e770
+treeNode_0x60300000e770 [label="[0x60300000e770]\lparent [0x60300000e7d0]\lleft   [0x60300000e740]\lright  [0x60300000e6b0]\lstring [0x60200000eb90] = english?\l"]
+treeNode_0x60300000e770->treeNode_0x60300000e740
+treeNode_0x60300000e740 [label="[0x60300000e740]\lparent [0x60300000e770]\lleft   [0x60300000e710]\lright  [0x60300000e6e0]\lstring [0x60200000eb70] = funny?\l"]
+treeNode_0x60300000e740->treeNode_0x60300000e710
+treeNode_0x60300000e710 [label="[0x60300000e710]\lparent [0x60300000e740]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000eb50] = Zhigalina\l"]
+treeNode_0x60300000e740->treeNode_0x60300000e6e0
+treeNode_0x60300000e6e0 [label="[0x60300000e6e0]\lparent [0x60300000e740]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000eb30] = Afanasyeva\l"]
+treeNode_0x60300000e770->treeNode_0x60300000e6b0
+treeNode_0x60300000e6b0 [label="[0x60300000e6b0]\lparent [0x60300000e770]\lleft   [(nil)]\lright  [(nil)]\lstring [0x60200000eb10] = Znamenskaya\l"]
+}
