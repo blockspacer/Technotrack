@@ -1,0 +1,27 @@
+digraph graf {
+treeNode_0x55cd5f37bd10 [label="/\l"]
+treeNode_0x55cd5f37bd10->treeNode_0x55cd5f37bd40
+treeNode_0x55cd5f37bd40 [label="-\l"]
+treeNode_0x55cd5f37bd40->treeNode_0x55cd5f37bda0
+treeNode_0x55cd5f37bda0 [label="0\l"]
+treeNode_0x55cd5f37bd40->treeNode_0x55cd5f37bef0
+treeNode_0x55cd5f37bef0 [label="+\l"]
+treeNode_0x55cd5f37bef0->treeNode_0x55cd5f37bf20
+treeNode_0x55cd5f37bf20 [label="x\l"]
+treeNode_0x55cd5f37bef0->treeNode_0x55cd5f37bf50
+treeNode_0x55cd5f37bf50 [label="x\l"]
+treeNode_0x55cd5f37bd10->treeNode_0x55cd5f37bd70
+treeNode_0x55cd5f37bd70 [label="*\l"]
+treeNode_0x55cd5f37bd70->treeNode_0x55cd5f37c040
+treeNode_0x55cd5f37c040 [label="*\l"]
+treeNode_0x55cd5f37c040->treeNode_0x55cd5f37c070
+treeNode_0x55cd5f37c070 [label="x\l"]
+treeNode_0x55cd5f37c040->treeNode_0x55cd5f37c0a0
+treeNode_0x55cd5f37c0a0 [label="x\l"]
+treeNode_0x55cd5f37bd70->treeNode_0x55cd5f37c0d0
+treeNode_0x55cd5f37c0d0 [label="*\l"]
+treeNode_0x55cd5f37c0d0->treeNode_0x55cd5f37c100
+treeNode_0x55cd5f37c100 [label="x\l"]
+treeNode_0x55cd5f37c0d0->treeNode_0x55cd5f37c130
+treeNode_0x55cd5f37c130 [label="x\l"]
+}

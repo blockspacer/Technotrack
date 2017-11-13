@@ -1,0 +1,11 @@
+digraph graf {
+treeNode_0x55cd5f37bce0 [label="/\l"]
+treeNode_0x55cd5f37bce0->treeNode_0x55cd5f37bc20
+treeNode_0x55cd5f37bc20 [label="1\l"]
+treeNode_0x55cd5f37bce0->treeNode_0x55cd5f37bcb0
+treeNode_0x55cd5f37bcb0 [label="*\l"]
+treeNode_0x55cd5f37bcb0->treeNode_0x55cd5f37bc50
+treeNode_0x55cd5f37bc50 [label="x\l"]
+treeNode_0x55cd5f37bcb0->treeNode_0x55cd5f37bc80
+treeNode_0x55cd5f37bc80 [label="x\l"]
+}
