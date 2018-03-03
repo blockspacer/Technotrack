@@ -10,12 +10,10 @@ Stack::Stack (size_t size):
     capacity (size)
 {
     data = new int [capacity];
-    assert (data); // no assert
+    assert (data);
     
     for (size_t i = 0; i < capacity; i++)
-    {
         data[i] = POISON;
-    }
 }
 
 Stack::~Stack ()
@@ -26,8 +24,7 @@ Stack::~Stack ()
 void Stack::Push (int value)
 {
     ASSERT_OK();
-    data [counter] = value;
-    counter++;
+    data [counter++] = value;
     ASSERT_OK();
 }
 
@@ -51,8 +48,7 @@ void Stack::Clear ()
 
 bool Stack::Ok () const
 {
-    return this && 
-	    data &&
+    return this && data &&
         capacity > 0 && 
 	    counter < capacity;
 }
