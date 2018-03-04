@@ -4,12 +4,12 @@
 
 int main ()
 {
-	Stack <int> stack_t(16);
+	Stack <long> stack_t(16);
     
-    for (int i = 0; i < 10; i++)
-        stack_t.Push(2*i);
-    stack_t.Push(115);
-    stack_t.Push(123);
+    for (int i = 0; i < 11; i++)
+        stack_t.Push(9*i);
+    stack_t.Push(34);
+    stack_t.Push(12);
  	stack_t.Pop();
 	stack_t.Dump();
 

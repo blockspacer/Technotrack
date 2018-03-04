@@ -17,7 +17,7 @@ Stack<data_T>::Stack(size_t size):
     }
     
     for (size_t i = 0; i < capacity; i++)
-        data[i] = POISON;
+        data[i] = (data_T)POISON;
 }
 
 template <typename data_T>
@@ -55,20 +55,18 @@ void Stack<data_T>::Clear()
 template <typename data_T>
 bool Stack<data_T>::Ok() const
 {
-    return this && data &&
-        capacity > 0 && 
-	    counter < capacity;
+    return this && data && counter < capacity;
 }
 
 template <typename data_T>
-void Stack<data_T>::Dump ()
+void Stack<data_T>::Dump()
 {
-    printf("Stack [%p] ", this);
-    printf("%s \n", (Ok ())? "ok": "ERROR");
-    printf("{\n");
-    printf("    Capacity: %zu \n", capacity);
-    printf("    Counter:  %zu \n", counter);
-    printf("    Data [%zu] [%p] = {\n", capacity, data);
+    printf("Stack [%p] %s \n{\n"
+           "    Capacity: %zu\n" 
+           "    Counter:  %zu\n"
+           "    Data [%zu] [%p] = {\n", 
+        this, (Ok ())? "ok": "ERROR", capacity, counter, capacity, data);
+    
     for (size_t i = 0; i < capacity; i++) {
         std::cout << "\t[" << i << "] = " << data[i];
         printf("%s\n", (data[i] == POISON)? " <=> POISON" : "");
