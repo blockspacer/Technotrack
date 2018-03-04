@@ -3,69 +3,79 @@
 #include <cassert>
 #include <cstring>
 
-#include "stack.hpp"
+#include "stack.h"
 
-Stack::Stack (size_t size):
-    counter (0),
+template <typename data_T>
+Stack<data_T>::Stack(size_t size):
+    counter  (0),
     capacity (size)
 {
-    data = new int [capacity];
-    assert (data);
+    data = new data_T[capacity];
+    if (!data) {
+        printf("Cannot allocate memory!\n");
+        exit(EXIT_FAILURE);
+    }
     
     for (size_t i = 0; i < capacity; i++)
         data[i] = POISON;
 }
 
-Stack::~Stack ()
+template <typename data_t>
+Stack<data_t>::~Stack()
 {
     delete [] data;
 }
 
-void Stack::Push (int value)
+template <typename data_t>
+void Stack<data_t>::Push(data_t value)
 {
     ASSERT_OK();
-    data [counter++] = value;
+    data[counter++] = value;
     ASSERT_OK();
 }
 
-int Stack::Pop ()
+template <typename data_t>
+data_t Stack<data_t>::Pop()
 {
     ASSERT_OK();
-    counter --;
+    counter--;
     ASSERT_OK();
-    int value = data [counter];
-    data [counter] = POISON;
+    data_t value = data[counter];
+    data[counter] = POISON;
     ASSERT_OK(); 
     return value; 
 }
 
-void Stack::Clear ()
+template <typename data_t>
+void Stack<data_t>::Clear ()
 {
     ASSERT_OK();
     counter = 0;
     ASSERT_OK();
 }
 
-bool Stack::Ok () const
+template <typename data_t>
+bool Stack<data_t>::Ok() const
 {
     return this && data &&
         capacity > 0 && 
 	    counter < capacity;
 }
 
-void Stack::Dump ()
+template <typename data_t>
+void Stack<data_t>::Dump ()
 {
-    PRINT("Stack [%p] ", this);
-    PRINT("%s \n", (Ok ())? "ok": "ERROR");
-    PRINT("{\n");
-    PRINT("    Capacity: %zu \n", capacity);
-    PRINT("    Counter: %zu \n", counter);
-    PRINT("    Data [%zu] [%p] = {\n", capacity, data);
+    printf("Stack [%p] ", this);
+    printf("%s \n", (Ok ())? "ok": "ERROR");
+    printf("{\n");
+    printf("    Capacity: %zu \n", capacity);
+    printf("    Counter: %zu \n", counter);
+    printf("    Data [%zu] [%p] = {\n", capacity, data);
     for (size_t i = 0; i < capacity; i++)
     {
-        PRINT("\t[%zu] = %d %s\n", i,
+        printf("\t[%zu] = %d %s\n", i,
         data[i], ((data[i] == POISON)? "<=> POISON" : " "));
     }
-    PRINT("    }\n");
-    PRINT("}\n");
+    printf("    }\n");
+    printf("}\n");
 }
