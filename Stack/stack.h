@@ -10,10 +10,13 @@
         exit(EXIT_FAILURE);                    \
 }
 
+const int POISON = -666;
+/*
 enum
 {
     POISON = -666
 };
+*/
 
 template <typename data_T>
 class Stack

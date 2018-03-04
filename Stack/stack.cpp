@@ -1,8 +1,8 @@
 #include <cstdlib>
+#include <iostream>
 #include <cstdio>
 #include <cassert>
 #include <cstring>
-
 #include "stack.h"
 
 template <typename data_T>
@@ -20,62 +20,58 @@ Stack<data_T>::Stack(size_t size):
         data[i] = POISON;
 }
 
-template <typename data_t>
-Stack<data_t>::~Stack()
+template <typename data_T>
+Stack<data_T>::~Stack()
 {
     delete [] data;
 }
 
-template <typename data_t>
-void Stack<data_t>::Push(data_t value)
+template <typename data_T>
+void Stack<data_T>::Push(data_T value)
 {
     ASSERT_OK();
     data[counter++] = value;
     ASSERT_OK();
 }
 
-template <typename data_t>
-data_t Stack<data_t>::Pop()
+template <typename data_T>
+data_T Stack<data_T>::Pop()
 {
     ASSERT_OK();
-    counter--;
-    ASSERT_OK();
-    data_t value = data[counter];
+    data_T value = data[--counter];
     data[counter] = POISON;
     ASSERT_OK(); 
     return value; 
 }
 
-template <typename data_t>
-void Stack<data_t>::Clear ()
+template <typename data_T>
+void Stack<data_T>::Clear()
 {
     ASSERT_OK();
     counter = 0;
     ASSERT_OK();
 }
 
-template <typename data_t>
-bool Stack<data_t>::Ok() const
+template <typename data_T>
+bool Stack<data_T>::Ok() const
 {
     return this && data &&
         capacity > 0 && 
 	    counter < capacity;
 }
 
-template <typename data_t>
-void Stack<data_t>::Dump ()
+template <typename data_T>
+void Stack<data_T>::Dump ()
 {
     printf("Stack [%p] ", this);
     printf("%s \n", (Ok ())? "ok": "ERROR");
     printf("{\n");
     printf("    Capacity: %zu \n", capacity);
-    printf("    Counter: %zu \n", counter);
+    printf("    Counter:  %zu \n", counter);
     printf("    Data [%zu] [%p] = {\n", capacity, data);
-    for (size_t i = 0; i < capacity; i++)
-    {
-        printf("\t[%zu] = %d %s\n", i,
-        data[i], ((data[i] == POISON)? "<=> POISON" : " "));
+    for (size_t i = 0; i < capacity; i++) {
+        std::cout << "\t[" << i << "] = " << data[i];
+        printf("%s\n", (data[i] == POISON)? " <=> POISON" : "");
     }
-    printf("    }\n");
-    printf("}\n");
+    printf("    }\n}\n");
 }

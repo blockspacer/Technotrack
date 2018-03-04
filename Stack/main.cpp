@@ -4,7 +4,7 @@
 
 int main ()
 {
-	Stack <unsigned> stack_t(16);
+	Stack <int> stack_t(16);
     
     for (int i = 0; i < 10; i++)
         stack_t.Push(2*i);
