@@ -1,17 +1,21 @@
-#include <cstdio>
-#include "stack.h"
-#include "stack.cpp"
+#include "stack.hpp"
 
-int main ()
+int main(void)
 {
-	Stack <long> stack_t(16);
-    
-    for (int i = 0; i < 11; i++)
-        stack_t.Push(9*i);
-    stack_t.Push(34);
-    stack_t.Push(12);
- 	stack_t.Pop();
-	stack_t.Dump();
+	Stack <long> stack_l(16);
+    Stack <int>  stack_i(16);
 
+    for (int i = 0; i < 11; i++)
+        stack_l.Push(9*i);
+    
+    stack_l.Dump();
+
+    for (int i = 0; i < 9; i++)
+        stack_i.Push((int)stack_l.Pop());
+   
+    stack_i.Dump();
+    stack_i.Clear();
+    stack_i.Dump();
+    
 	return 0;
 }

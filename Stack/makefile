@@ -1,16 +1,16 @@
-CC     = g++
-CFLAGS = -c -Wall
+CC         = g++
+GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 
-all: sstack
+all: stack
 
-sstack: stack.h stack.cpp main.cpp
-	$(CC) main.cpp -o stack
+stack: main.cpp stack.hpp
+	$(CC) main.cpp -o stack 
 
-stack: stack.o main.o
-	$(CC) stack.o main.o -o stack
-
-%.o: %.c stack.h
-	$(CC) $(CFLAGS) $<
+gcov_stack: main.cpp stack.hpp
+	$(CC) $(GCOV_FLAGS) main.cpp -o stack 
 
 clean:
-	rm *.o stack
+	rm stack
+
+gcov_clean:
+	rm *.gcda *.gcno *.gcov stack

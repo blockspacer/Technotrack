@@ -1,9 +1,38 @@
-#include <cstdlib>
+#ifndef STACK_HPP
+#define STACK_HPP
+
 #include <iostream>
 #include <cstdio>
-#include <cassert>
-#include <cstring>
-#include "stack.h"
+
+#define ASSERT_OK()                            \
+    if (!Ok ()) {                              \
+        printf("ERROR DETECTED!\nFILE: %s, "   \
+               "FUNCTION: %s, LINE: %d\n\n",   \
+               __FILE__, __func__,  __LINE__); \
+        Dump();                                \
+        exit(EXIT_FAILURE);                    \
+}
+
+const int POISON = -99;
+
+template <typename data_T>
+class Stack
+{
+private:
+    data_T* data;
+    size_t counter;
+    /* counter shows the number of the first free cell */
+    size_t capacity;
+
+public:
+    Stack      (size_t size);
+    ~Stack     ();
+    void Push  (data_T value);
+    data_T Pop ();
+    void Clear ();
+    bool Ok    () const;
+    void Dump  ();
+};
 
 template <typename data_T>
 Stack<data_T>::Stack(size_t size):
@@ -48,6 +77,8 @@ template <typename data_T>
 void Stack<data_T>::Clear()
 {
     ASSERT_OK();
+    for (size_t i = 0; i < capacity; i++)
+        data[i] = (data_T)POISON;
     counter = 0;
     ASSERT_OK();
 }
@@ -69,7 +100,9 @@ void Stack<data_T>::Dump()
     
     for (size_t i = 0; i < capacity; i++) {
         std::cout << "\t[" << i << "] = " << data[i];
-        printf("%s\n", (data[i] == POISON)? " <=> POISON" : "");
+        printf("%s\n", (data[i] == POISON)? " (POISON)" : "");
     }
     printf("    }\n}\n");
 }
+
+#endif
