@@ -3,10 +3,10 @@ GCOV_FLAGS = -fprofile-arcs -ftest-coverage
 
 all: stack
 
-stack: main.cpp stack.hpp
+stack: main.cpp stack.hpp vector.hpp
 	$(CC) main.cpp -o stack 
 
-gcov_stack: main.cpp stack.hpp
+gcov_stack: main.cpp stack.hpp vector.hpp
 	$(CC) $(GCOV_FLAGS) main.cpp -o stack 
 
 clean:

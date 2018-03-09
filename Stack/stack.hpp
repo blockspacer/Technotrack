@@ -2,10 +2,10 @@
 #define STACK_HPP
 
 #include <iostream>
-#include <cstdio>
+#include "vector.hpp"
 
 #define ASSERT_OK()                            \
-    if (!Ok ()) {                              \
+    if (!Ok()) {                               \
         printf("ERROR DETECTED!\nFILE: %s, "   \
                "FUNCTION: %s, LINE: %d\n\n",   \
                __FILE__, __func__,  __LINE__); \
@@ -13,17 +13,15 @@
         exit(EXIT_FAILURE);                    \
 }
 
-const int POISON = -99;
-
 template <typename data_T>
 class Stack
 {
 private:
-    data_T* data;
-    size_t counter;
-    /* counter shows the number of the first free cell */
-    size_t capacity;
-
+    int counter_     = 0;
+    /* counter_ shows the number of the first free cell */
+    size_t capacity_ = 0;
+    Vector <data_T> data_;
+  
 public:
     Stack      (size_t size);
     ~Stack     ();
@@ -36,30 +34,24 @@ public:
 
 template <typename data_T>
 Stack<data_T>::Stack(size_t size):
-    counter  (0),
-    capacity (size)
-{
-    data = new data_T[capacity];
-    if (!data) {
-        printf("Cannot allocate memory!\n");
-        exit(EXIT_FAILURE);
-    }
-    
-    for (size_t i = 0; i < capacity; i++)
-        data[i] = (data_T)POISON;
-}
+    counter_  (0),
+    capacity_ (size),
+    data_     (capacity_) {}
 
 template <typename data_T>
-Stack<data_T>::~Stack()
-{
-    delete [] data;
-}
+Stack<data_T>::~Stack() {}
 
 template <typename data_T>
 void Stack<data_T>::Push(data_T value)
 {
     ASSERT_OK();
-    data[counter++] = value;
+    counter_++;
+    if (!Ok()) {
+        counter_--;
+        printf("Unable to push (full stack)\n");
+        return;
+    }
+    data_[counter_-1] = value;
     ASSERT_OK();
 }
 
@@ -67,8 +59,10 @@ template <typename data_T>
 data_T Stack<data_T>::Pop()
 {
     ASSERT_OK();
-    data_T value = data[--counter];
-    data[counter] = POISON;
+    counter_--;
+    ASSERT_OK();
+    data_T value = data_[counter_];
+    data_[counter_] = 0;
     ASSERT_OK(); 
     return value; 
 }
@@ -77,16 +71,16 @@ template <typename data_T>
 void Stack<data_T>::Clear()
 {
     ASSERT_OK();
-    for (size_t i = 0; i < capacity; i++)
-        data[i] = (data_T)POISON;
-    counter = 0;
+    for (size_t i = 0; i < capacity_; i++)
+        data_[i] = (data_T)0;
+    counter_ = 0;
     ASSERT_OK();
 }
 
 template <typename data_T>
 bool Stack<data_T>::Ok() const
 {
-    return this && data && counter < capacity;
+    return counter_ >= 0 && counter_ <= capacity_;
 }
 
 template <typename data_T>
@@ -94,14 +88,13 @@ void Stack<data_T>::Dump()
 {
     printf("Stack [%p] %s \n{\n"
            "    Capacity: %zu\n" 
-           "    Counter:  %zu\n"
+           "    Counter:  %d\n"
            "    Data [%zu] [%p] = {\n", 
-        this, (Ok ())? "ok": "ERROR", capacity, counter, capacity, data);
+        this, (Ok ())? "ok": "ERROR", capacity_, counter_, capacity_, data_);
     
-    for (size_t i = 0; i < capacity; i++) {
-        std::cout << "\t[" << i << "] = " << data[i];
-        printf("%s\n", (data[i] == POISON)? " (POISON)" : "");
-    }
+    for (size_t i = 0; i < capacity_; i++)
+        std::cout << "\t[" << i << "] = " << data_[i] << std::endl;
+    
     printf("    }\n}\n");
 }
 
