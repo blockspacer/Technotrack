@@ -30,6 +30,7 @@ public:
     void Clear ();
     bool Ok    () const;
     void Dump  ();
+    void DumpElem (size_t cnt);
 };
 
 template <typename data_T>
@@ -84,16 +85,58 @@ bool Stack<data_T>::Ok() const
 }
 
 template <typename data_T>
+void Stack<data_T>::DumpElem(size_t cnt)
+{
+    printf("\tUnknown type\n");
+}
+
+/*________ Partial specialization _______*/
+template <>
+void Stack<int>::DumpElem(size_t cnt)
+{ 
+    printf("\t[%zu] = %i (int)\n", cnt, data_[cnt]);
+}
+ 
+template <>
+void Stack<unsigned>::DumpElem(size_t cnt)
+{ 
+    printf("\t[%zu] = %u (unsigned)\n", cnt, data_[cnt]);
+}
+
+template <>
+void Stack<size_t>::DumpElem(size_t cnt)
+{ 
+    printf("\t[%zu] = %zu (size_t)\n", cnt, data_[cnt]);
+}
+
+template <>
+void Stack<long>::DumpElem(size_t cnt)
+{ 
+    printf("\t[%zu] = %ld (long)\n", cnt, data_[cnt]);
+}
+
+template <>
+void Stack<double>::DumpElem(size_t cnt)
+{ 
+    printf("\t[%zu] = %lg (double)\n", cnt, data_[cnt]);
+}
+
+template <>
+void Stack<char>::DumpElem(size_t cnt)
+{ 
+    printf("\t[%zu] = %c (char)\n", cnt, data_[cnt]);
+}
+/*_______________________________________*/
+
+template <typename data_T>
 void Stack<data_T>::Dump()
 {
-    printf("Stack [%p] %s \n{\n"
-           "    Capacity: %zu\n" 
-           "    Counter:  %d\n"
-           "    Data [%zu] [%p] = {\n", 
-        this, (Ok ())? "ok": "ERROR", capacity_, counter_, capacity_, data_);
+    printf("Stack [%p] %s \n{\n    Capacity: %zu\n" 
+       "    Counter:  %d \n    Data [%zu] [%p] = {\n", 
+        this, (Ok())? "ok": "ERROR", capacity_, counter_, capacity_, data_);
     
     for (size_t i = 0; i < capacity_; i++)
-        std::cout << "\t[" << i << "] = " << data_[i] << std::endl;
+        DumpElem(i);
     
     printf("    }\n}\n");
 }

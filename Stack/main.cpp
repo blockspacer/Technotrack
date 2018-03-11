@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    Stack <long> stack_l(16);
+    Stack <unsigned> stack_l(16);
     Stack <int>  stack_i(16);
 
     for (int i = 1; i < 17; i++)
