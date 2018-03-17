@@ -14,8 +14,8 @@ template <typename data_T>
 class Stack
 {
 private:
-    size_t counter_  = 0;
-    /* counter_ shows the number of the first free cell */
+    size_t size_ = 0;
+    /* size_ shows the number of the first free cell */
     size_t capacity_ = 0;
     Vector <data_T> data_;
   
@@ -27,13 +27,12 @@ public:
     int Pop        (data_T* value);
     int  Clear     ();
     bool Ok        () const;
-    void Dump      () const;
-    void DumpElem  (size_t cnt) const;
+    void Dump      ();
 };
 
 template <typename data_T>
 Stack<data_T>::Stack(size_t capacity):
-    counter_  (0),
+    size_     (0),
     capacity_ (capacity),
     data_     (capacity_) 
 {
@@ -42,7 +41,7 @@ Stack<data_T>::Stack(size_t capacity):
 
 template <typename data_T>
 Stack<data_T>::Stack(const Stack& that):
-    counter_  (that.counter_),
+    size_     (that.size_),
     capacity_ (that.capacity_),
     data_     (capacity_)
 {
@@ -62,13 +61,13 @@ template <typename data_T>
 int Stack<data_T>::Push(data_T value)
 {
     ASSERT_OK();
-    counter_++;
+    size_++;
     if (!Ok()) {
-        counter_--;
+        size_--;
         printf("Unable to push (full stack)\n");
         return S_ERR_FULL;
     }
-    data_[counter_-1] = value;
+    data_[size_-1] = value;
     ASSERT_OK();
     return S_ERR_OK;
 }
@@ -77,8 +76,8 @@ template <typename data_T>
 int Stack<data_T>::Pop(data_T* value)
 {
     ASSERT_OK();
-    *value = data_[--counter_];
-    data_[counter_] = 0;
+    *value = data_[--size_];
+    data_[size_] = 0;
     ASSERT_OK(); 
     return S_ERR_OK;
 }
@@ -89,7 +88,7 @@ int Stack<data_T>::Clear()
     ASSERT_OK();
     for (size_t i = 0; i < capacity_; i++)
         data_[i] = (data_T)0;
-    counter_ = 0;
+    size_ = 0;
     ASSERT_OK();
     return S_ERR_OK;
 }
@@ -97,64 +96,15 @@ int Stack<data_T>::Clear()
 template <typename data_T>
 bool Stack<data_T>::Ok() const
 {
-    return counter_ >= 0 && counter_ <= capacity_ && capacity_ > 0;
+    return size_ >= 0 && size_ <= capacity_ && capacity_ > 0;
 }
 
 template <typename data_T>
-void Stack<data_T>::DumpElem(size_t cnt) const
+void Stack<data_T>::Dump()
 {
-    printf("\tUnknown type\n");
-}
-
-/*________ Partial specialization _______*/
-template <>
-void Stack<int>::DumpElem(size_t cnt) const
-{ 
-    printf("\t[%zu] = %i (int)\n", cnt, data_[cnt]);
-}
- 
-template <>
-void Stack<unsigned>::DumpElem(size_t cnt) const
-{ 
-    printf("\t[%zu] = %u (unsigned)\n", cnt, data_[cnt]);
-}
-
-template <>
-void Stack<size_t>::DumpElem(size_t cnt) const
-{ 
-    printf("\t[%zu] = %zu (size_t)\n", cnt, data_[cnt]);
-}
-
-template <>
-void Stack<long>::DumpElem(size_t cnt) const
-{ 
-    printf("\t[%zu] = %ld (long)\n", cnt, data_[cnt]);
-}
-
-template <>
-void Stack<double>::DumpElem(size_t cnt) const
-{ 
-    printf("\t[%zu] = %lg (double)\n", cnt, data_[cnt]);
-}
-
-template <>
-void Stack<char>::DumpElem(size_t cnt) const
-{ 
-    printf("\t[%zu] = %c (char)\n", cnt, data_[cnt]);
-}
-/*_______________________________________*/
-
-template <typename data_T>
-void Stack<data_T>::Dump() const
-{
-    printf("Stack [%p] %s \n{\n    Capacity: %zu\n" 
-       "    Counter:  %zu\n    Data [%zu] [%p] = {\n", 
-        this, (Ok())? "ok": "ERROR", capacity_, counter_, capacity_, data_);
-    
-    for (size_t i = 0; i < capacity_; i++)
-        DumpElem(i);
-    
-    printf("    }\n}\n");
+    printf ("Stack  [this: %p; capacity: %zu; size: %zu; data: %p] %s\n",
+            this, capacity_, size_, data_, (Ok())? "ok": "ERROR");
+    data_.Dump();
 }
 
 #endif
