@@ -1,7 +1,7 @@
 #include "stack.hpp"
 #include "vector.hpp"
 
-int main(void)
+void test_1()
 {
     Stack <unsigned> stack_l(16);
     Stack <int>  stack_i(16);
@@ -11,12 +11,29 @@ int main(void)
     
     stack_l.Dump();
 
+    unsigned val = 0;
     for (int i = 0; i < 9; i++)
-        stack_i.Push((int)stack_l.Pop());
+        stack_i.Push((int)stack_l.Pop(&val));
    
     stack_i.Dump();
     stack_i.Clear();
     stack_i.Dump(); 
-      
-	return 0;
+}
+
+void copy_test()
+{   
+    Stack <int> st(8);
+    for (int i = 1; i < 5; i++) 
+        st.Push(i);
+    st.Dump();
+
+    Stack <int> copy(st);
+    copy.Dump();
+}
+
+int main(void)
+{
+    //test_1();
+    copy_test();
+    return 0;
 }
